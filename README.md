@@ -1,2 +1,2 @@
 # ESPpad
-Use your esp 32 as gamepad
+Use your ESP32 or Arduino with serial port as gamepad
