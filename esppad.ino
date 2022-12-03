@@ -1,6 +1,10 @@
 //created by Piotr Ochal
 
 //button ABXY
+const int big=25;
+const int smal=26;
+int mbig;
+int msmal;
 const int bA = 19;
 const int bB = 23;
 const int bX = 21;
@@ -57,7 +61,8 @@ void setup() {
 
 void loop() {
   //read variables
-  
+  int licz=0;
+  while (true){
   vA = digitalRead(bA);
   vX = digitalRead(bX);
   vB = digitalRead(bB);
@@ -91,13 +96,13 @@ void loop() {
   Serial.print(vX);
   Serial.print("y");
   Serial.print(vY);
-  Serial.print("Jlx");
+  Serial.print("JLx");
   Serial.print(4095-vJlx+1000);//add 1000 becuese constant length is easier to read
-  Serial.print("Jly");
+  Serial.print("JLy");
   Serial.print(vJly+1000);
-  Serial.print("Jrx");
+  Serial.print("JRx");
   Serial.print(vJrx+1000);
-  Serial.print("Jry");
+  Serial.print("JRy");
   Serial.print(4095-vJry+1000);
   Serial.print("^");
   Serial.print(vu);
@@ -107,14 +112,24 @@ void loop() {
   Serial.print(vl);
   Serial.print(">");
   Serial.print(vr);
-  Serial.print("R");
+  Serial.print("e");
   Serial.print(1-jr);
-  Serial.print("L");
+  Serial.print("q");
   Serial.print(1-jl);
+  if( licz ==0){
+  Serial.print('m');
+  msmal=255-Serial.read();
+  mbig=255-Serial.read();
+  //Serial.print("00000000000000000000000000000000000000");
+  }
+  dacWrite(big,mbig);
+  dacWrite(smal,msmal);
+  licz++;
+  if(licz==5)licz=0;
 //  Serial.print("Tl");
 //  Serial.print(vTl+1000);
 //  Serial.print("Tr");
 //  Serial.println(vTr+1000);
 //    
   
-}
+}}
